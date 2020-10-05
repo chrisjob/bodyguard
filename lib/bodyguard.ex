@@ -172,6 +172,7 @@ defmodule Bodyguard do
   # Coerce auth results
   defp resolve_result(true), do: :ok
   defp resolve_result(:ok), do: :ok
+  defp resolve_result({:ok, resource}), do: {:ok, resource}
   defp resolve_result(false), do: {:error, @default_error}
   defp resolve_result(:error), do: {:error, @default_error}
   defp resolve_result({:error, reason}), do: {:error, reason}
